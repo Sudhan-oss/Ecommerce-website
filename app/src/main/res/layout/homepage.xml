@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bakcground"
+    android:gravity="center"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <!-- Homepage Components -->
+    <LinearLayout
+        android:id="@+id/home_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <!-- Product Cards -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_products"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="8dp" />
+
+        <!-- Settings Menu -->
+        <ImageButton
+            android:id="@+id/btn_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_settings"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="Settings" />
+
+        <!-- Product Search Bar -->
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Search Products"
+            android:padding="8dp" />
+
+        <!-- Product Cart Button -->
+        <Button
+            android:id="@+id/btn_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Cart" />
+
+    </LinearLayout>
+
+    <!-- Login Components -->
+    <LinearLayout
+        android:id="@+id/login_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!-- Login Image -->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_account_circle_24"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Username EditText -->
+        <EditText
+            android:id="@+id/UserName_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ronded_corner"
+            android:hint="Username"
+            android:padding="15dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:inputType="text" />
+
+        <!-- Password EditText -->
+        <EditText
+            android:id="@+id/Password_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/ronded_corner"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="15dp"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <!-- Login Button -->
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Login" />
+
+        <!-- Register Button -->
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Register" />
+
+    </LinearLayout>
+
+</RelativeLayout>
