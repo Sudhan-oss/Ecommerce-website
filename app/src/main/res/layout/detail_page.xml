@@ -4,9 +4,11 @@
     android:id="@+id/detail_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_image"
+    android:background="@drawable/login_bakcground"
     android:padding="16dp"
+
     tools:context=".DetailActivity">
+
 
     <!-- Product Image -->
     <ImageView
@@ -15,7 +17,7 @@
         android:layout_height="200dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
-        android:src="@drawable/product_image_placeholder"
+        android:src="@drawable/img_1"
         android:scaleType="centerCrop" />
 
     <!-- Product Name -->
@@ -38,7 +40,7 @@
         android:layout_below="@id/text_product_name"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp"
-        android:text="Price: $10.00"
+        android:text="Price: $100.00"
         android:textSize="18sp"
         android:textColor="@color/black" />
 
