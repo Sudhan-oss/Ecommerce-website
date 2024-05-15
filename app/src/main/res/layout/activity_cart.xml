@@ -1,54 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!-- cart_page.xml -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".CartActivity">
+    android:layout_height="match_parent">
 
-    <ListView
-        android:id="@+id/cart_list_view"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewCart"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/total_layout"
-        android:divider="@android:color/darker_gray"
-        android:dividerHeight="1dp" />
+        android:layout_height="match_parent"
+        android:layout_above="@id/btnPlaceOrder"/>
 
-    <RelativeLayout
-        android:id="@+id/total_layout"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textViewTotal"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:padding="16dp"
-        android:background="@android:color/white">
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:text="Total: $0.00"
+        android:textSize="18sp"/>
 
-        <TextView
-            android:id="@+id/total_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Total:"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+    <Button
+        android:id="@+id/btnPlaceOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
+        android:text="Place Order"/>
 
-        <TextView
-            android:id="@+id/total_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:text="$0.00"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/checkout_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/total_price"
-            android:layout_alignParentEnd="true"
-            android:text="Checkout"
-            android:background="@color/design_default_color_primary"
-            android:textColor="@android:color/white"
-            android:padding="12dp"
-            android:layout_marginTop="8dp" />
-
-    </RelativeLayout>
 </RelativeLayout>
