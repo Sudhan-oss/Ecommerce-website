@@ -1,47 +1,61 @@
-package com.example.ecomerce_website;
+package com.example.myapplication;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ListView;
+import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
-import java.util.List;
 
 public class CartActivity extends AppCompatActivity {
 
-    private List<CartItem> cartItems;
+    private RecyclerView recyclerViewCart;
     private CartAdapter cartAdapter;
-    private TextView totalTextView;
+    private ArrayList<CartItem> cartItemList;
+    private TextView textViewTotal;
+    private Button btnPlaceOrder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-        cartItems = new ArrayList<>();
-        // Add sample items to cart
-        cartItems.add(new CartItem("Product 1", 10.0, 1, R.drawable.img_1));
+        // Initialize views
+        recyclerViewCart = findViewById(R.id.recyclerViewCart);
+        textViewTotal = findViewById(R.id.textViewTotal);
+        btnPlaceOrder = findViewById(R.id.btnPlaceOrder);
 
-        ListView cartListView = findViewById(R.id.cart_list_view);
-        cartAdapter = new CartAdapter(this, cartItems);
-        cartListView.setAdapter(cartAdapter);
+        // Initialize cart item list (replace with actual data retrieval logic)
+        cartItemList = new ArrayList<>();
+        // Example data:
+        cartItemList.add(new CartItem("Product 1", "$10", 2));
+        cartItemList.add(new CartItem("Product 2", "$20", 1));
+        cartItemList.add(new CartItem("Product 3", "$30", 3));
 
-        totalTextView = findViewById(R.id.total_price);
-        updateTotal();
+        // Set up RecyclerView and adapter
+        cartAdapter = new CartAdapter(this, cartItemList);
+        recyclerViewCart.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewCart.setAdapter(cartAdapter);
+
+        // Calculate and display total price
+        double totalPrice = calculateTotalPrice(cartItemList);
+        textViewTotal.setText("Total: $" + totalPrice);
+
+        // Handle place order button click
+        btnPlaceOrder.setOnClickListener(v -> placeOrder());
     }
 
-    private void updateTotal() {
-        double total = 0;
-        for (CartItem item : cartItems) {
-            total += item.getPrice() * item.getQuantity();
+    private double calculateTotalPrice(ArrayList<CartItem> cartItemList) {
+        double totalPrice = 0;
+        for (CartItem item : cartItemList) {
+            totalPrice += Double.parseDouble(item.getPrice().substring(1)) * item.getQuantity();
         }
-        totalTextView.setText("$" + total);
+        return totalPrice;
     }
 
-    public void onCheckoutClick(View view) {
-        // Handle checkout logic here
+    private void placeOrder() {
+        // Implement checkout logic here
+        // This can involve clearing the cart, saving order details, etc.
     }
 }
