@@ -1,5 +1,6 @@
 package com.example.ecomerce_website;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -42,6 +43,8 @@ public class CartActivity extends AppCompatActivity {
     }
 
     public void onCheckoutClick(View view) {
-        // Handle checkout logic here
+        Intent intent = new Intent(CartActivity.this, CheckoutActivity.class);
+        intent.putExtra("cartItems", (ArrayList<CartItem>) cartItems);
+        startActivity(intent);
     }
 }
