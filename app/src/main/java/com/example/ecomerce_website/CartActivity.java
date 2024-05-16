@@ -6,6 +6,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.ecomerce_website.CartAdapter;
+
 import java.util.ArrayList;
 
 public class CartActivity extends AppCompatActivity {
