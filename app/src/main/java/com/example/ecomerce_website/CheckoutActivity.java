@@ -44,6 +44,5 @@ public class CheckoutActivity extends AppCompatActivity {
     public void onConfirmOrderClick(View view) {
         // Handle order confirmation logic here
         Toast.makeText(this, "Order confirmed!", Toast.LENGTH_SHORT).show();
-        // You may want to implement further logic here, such as submitting the order to a server
     }
 }
