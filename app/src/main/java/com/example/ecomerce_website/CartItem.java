@@ -1,17 +1,16 @@
 package com.example.ecomerce_website;
 
-public class CartItem {
+import java.io.Serializable;
 
+public class CartItem implements Serializable {
     private String name;
     private double price;
     private int quantity;
-    private int imageResourceId;
 
-    public CartItem(String name, double price, int quantity, int imageResourceId) {
+    public CartItem(String name, double price, int quantity) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
-        this.imageResourceId = imageResourceId;
     }
 
     public String getName() {
@@ -26,7 +25,20 @@ public class CartItem {
         return quantity;
     }
 
-    public int getImageResourceId() {
-        return imageResourceId;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return name + ": $" + price + " x " + quantity;
     }
 }

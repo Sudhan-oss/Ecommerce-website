@@ -14,7 +14,7 @@ import java.util.List;
 public class CheckoutActivity extends AppCompatActivity {
 
     private List<CartItem> cartItems;
-    private CartAdapter cartAdapter;
+    private CartListAdapter cartListAdapter;
     private TextView totalTextView;
 
     @Override
@@ -26,8 +26,8 @@ public class CheckoutActivity extends AppCompatActivity {
         cartItems = (ArrayList<CartItem>) getIntent().getSerializableExtra("cartItems");
 
         ListView checkoutListView = findViewById(R.id.checkout_list_view);
-        cartAdapter = new CartAdapter(this, cartItems);
-        checkoutListView.setAdapter(cartAdapter);
+        cartListAdapter = new CartListAdapter(this, cartItems);
+        checkoutListView.setAdapter(cartListAdapter);
 
         totalTextView = findViewById(R.id.checkout_total_price);
         updateTotal();
@@ -43,6 +43,7 @@ public class CheckoutActivity extends AppCompatActivity {
 
     public void onConfirmOrderClick(View view) {
         // Handle order confirmation logic here
+        // This can involve saving the order to a database, sending a confirmation email, etc.
         Toast.makeText(this, "Order confirmed!", Toast.LENGTH_SHORT).show();
     }
 }

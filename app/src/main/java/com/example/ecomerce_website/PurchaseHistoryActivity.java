@@ -1,4 +1,4 @@
-package com.example.ecomerce_website.;
+package com.example.ecomerce_website;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;

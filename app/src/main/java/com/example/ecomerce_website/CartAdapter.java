@@ -4,46 +4,49 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
+import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
-public class CartAdapter extends ArrayAdapter<CartItem> {
+public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
-    private final Context context;
-    private final List<CartItem> cartItems;
+    private Context context;
+    private List<CartItem> cartItems;
 
-    public CartAdapter(@NonNull Context context, @NonNull List<CartItem> objects) {
-        super(context, R.layout.cart_item, objects);
+    public CartAdapter(Context context, List<CartItem> cartItems) {
         this.context = context;
-        this.cartItems = objects;
+        this.cartItems = cartItems;
     }
 
-    @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View itemView = convertView;
-        if (itemView == null) {
-            itemView = LayoutInflater.from(context).inflate(R.layout.cart_item, parent, false);
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.cart_item, parent, false);
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        CartItem cartItem = cartItems.get(position);
+        holder.productName.setText(cartItem.getName());
+        holder.productPrice.setText("$" + cartItem.getPrice());
+        holder.productQuantity.setText("Quantity: " + cartItem.getQuantity());
+    }
+
+    @Override
+    public int getItemCount() {
+        return cartItems.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        public TextView productName;
+        public TextView productPrice;
+        public TextView productQuantity;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            productName = itemView.findViewById(R.id.product_name);
+            productPrice = itemView.findViewById(R.id.product_price);
+            productQuantity = itemView.findViewById(R.id.product_quantity);
         }
-
-        CartItem currentItem = cartItems.get(position);
-
-        ImageView productImage = itemView.findViewById(R.id.product_image);
-        TextView productName = itemView.findViewById(R.id.product_name);
-        TextView productPrice = itemView.findViewById(R.id.product_price);
-        TextView productQuantity = itemView.findViewById(R.id.product_quantity);
-
-        productImage.setImageResource(currentItem.getImageResourceId());
-        productName.setText(currentItem.getName());
-        productPrice.setText("$" + currentItem.getPrice());
-        productQuantity.setText("Quantity: " + currentItem.getQuantity());
-
-        return itemView;
     }
 }
