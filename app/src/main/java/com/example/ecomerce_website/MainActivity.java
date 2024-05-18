@@ -1,5 +1,6 @@
 package com.example.ecomerce_website;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     private EditText usernameEditText, passwordEditText;
-    private Button login_Button;
+    private Button login_Button, register_Btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         usernameEditText = findViewById(R.id.UserName_input);
         passwordEditText = findViewById(R.id.Password_input);
         login_Button = findViewById(R.id.login_button);
+        register_Btn = findViewById(R.id.Register_Btn);
 
         // Set onClickListener for the loginButton
         login_Button.setOnClickListener(new View.OnClickListener() {
@@ -41,5 +43,16 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        // Set onClickListener for the registerButton
+        register_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Intent to navigate to RegisterActivity
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
+
