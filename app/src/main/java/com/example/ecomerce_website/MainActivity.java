@@ -34,9 +34,12 @@ public class MainActivity extends AppCompatActivity {
 
                 // Check if username and password are not empty
                 if (!username.isEmpty() && !password.isEmpty()) {
-                    // Here you would typically perform authentication
-                    // For demonstration, just show a Toast message
+                    // Show a Toast message for logging in
                     Toast.makeText(MainActivity.this, "Logging in...", Toast.LENGTH_SHORT).show();
+
+                    // Navigate to HomePageActivity after the toast message
+                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    startActivity(intent);
                 } else {
                     // Display error message if username or password is empty
                     Toast.makeText(MainActivity.this, "Please enter username and password", Toast.LENGTH_SHORT).show();
@@ -55,4 +58,3 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
-

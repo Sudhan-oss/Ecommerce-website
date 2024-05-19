@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.SearchView;
+import androidx.appcompat.widget.SearchView;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
         // Initialize views
         productRecyclerView = findViewById(R.id.productRecyclerView);
         cartIcon = findViewById(R.id.cartIcon);
-        searchView = findViewById(R.id.searchView);
+        SearchView searchView = findViewById(R.id.searchView);
 
         // Initialize product list and adapter
         productList = new ArrayList<>();
