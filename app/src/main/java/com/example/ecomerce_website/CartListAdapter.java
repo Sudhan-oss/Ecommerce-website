@@ -46,7 +46,7 @@ public class CartListAdapter extends BaseAdapter {
         TextView productPrice = convertView.findViewById(R.id.product_price);
         TextView productQuantity = convertView.findViewById(R.id.product_quantity);
 
-        productName.setText(cartItem.getName());
+        productName.setText(cartItem.getProductName());
         productPrice.setText("$" + cartItem.getPrice());
         productQuantity.setText("Quantity: " + cartItem.getQuantity());
 

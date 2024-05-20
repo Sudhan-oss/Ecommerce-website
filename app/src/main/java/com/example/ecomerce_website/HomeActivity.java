@@ -1,21 +1,25 @@
 package com.example.ecomerce_website;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.view.View;
-import android.widget.ImageView;
-import androidx.appcompat.widget.SearchView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements ProductAdapter.OnItemClickListener {
 
     private RecyclerView productRecyclerView;
     private ProductAdapter productAdapter;
     private List<Product> productList;
+    private ArrayList<CartItem> cartItemList;
     private ImageView cartIcon;
+    private Button cartButton;
     private SearchView searchView;
 
     @Override
@@ -26,11 +30,15 @@ public class HomeActivity extends AppCompatActivity {
         // Initialize views
         productRecyclerView = findViewById(R.id.productRecyclerView);
         cartIcon = findViewById(R.id.cartIcon);
-        SearchView searchView = findViewById(R.id.searchView);
+        cartButton = findViewById(R.id.cartButton);
+        searchView = findViewById(R.id.searchView);
 
-        // Initialize product list and adapter
+        // Initialize product list and cart item list
         productList = new ArrayList<>();
-        productAdapter = new ProductAdapter(this, productList);
+        cartItemList = new ArrayList<>();
+
+        // Set up RecyclerView and adapter
+        productAdapter = new ProductAdapter(this, productList, this);
         productRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         productRecyclerView.setAdapter(productAdapter);
 
@@ -41,8 +49,15 @@ public class HomeActivity extends AppCompatActivity {
         cartIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Open cart activity or fragment
-                // Example: startActivity(new Intent(HomeActivity.this, CartActivity.class));
+                openCart();
+            }
+        });
+
+        // Set click listener for cart button
+        cartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openCart();
             }
         });
 
@@ -51,26 +66,44 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 // Perform search based on query
-                // Example: performSearch(query);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
                 // Update search results as user types
-                // Example: updateSearchResults(newText);
                 return false;
             }
         });
     }
 
+    @Override
+    public void onAddToCartClick(Product product) {
+        boolean found = false;
+        for (CartItem item : cartItemList) {
+            if (item.getProductName().equals(product.getName())) {
+                item.setQuantity(item.getQuantity() + 1);
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            cartItemList.add(new CartItem(product.getName(), product.getPrice(), 1));
+        }
+    }
+
+    private void openCart() {
+        Intent intent = new Intent(HomeActivity.this, CartActivity.class);
+        intent.putExtra("cartItems", cartItemList);
+        startActivity(intent);
+    }
+
     // Method to populate productList with dummy data (for demonstration)
     private void populateProductList() {
         // Add dummy products to productList
-        productList.add(new Product("Product 1", "$10.00"));
-        productList.add(new Product("Product 2", "$15.00"));
-        productList.add(new Product("Product 3", "$20.00"));
-        // Add more products as needed
+        productList.add(new Product("Product 1", 10.0));
+        productList.add(new Product("Product 2", 15.0));
+        productList.add(new Product("Product 3", 20.0));
         // Notify adapter of data change
         productAdapter.notifyDataSetChanged();
     }

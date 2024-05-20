@@ -27,12 +27,8 @@ public class CartActivity extends AppCompatActivity {
         textViewTotal = findViewById(R.id.textViewTotal);
         btnPlaceOrder = findViewById(R.id.btnPlaceOrder);
 
-        // Initialize cart item list (replace with actual data retrieval logic)
-        cartItemList = new ArrayList<>();
-        // Example data:
-        cartItemList.add(new CartItem("Product 1", 10.0, 2));
-        cartItemList.add(new CartItem("Product 2", 20.0, 1));
-        cartItemList.add(new CartItem("Product 3", 30.0, 3));
+        // Retrieve cart items from intent
+        cartItemList = (ArrayList<CartItem>) getIntent().getSerializableExtra("cartItems");
 
         // Set up RecyclerView and adapter
         cartAdapter = new CartAdapter(this, cartItemList);

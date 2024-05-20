@@ -2,9 +2,9 @@ package com.example.ecomerce_website;
 
 public class Product {
     private String name;
-    private String price;
+    private double price;
 
-    public Product(String name, String price) {
+    public Product(String name, double price) {
         this.name = name;
         this.price = price;
     }
@@ -13,16 +13,7 @@ public class Product {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
 }
-

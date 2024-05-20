@@ -1,26 +1,27 @@
-<!-- activity_home.xml -->
+<!-- res/layout/activity_home.xml -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@drawable/login_bakcground"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background">
 
     <!-- Search Bar -->
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
-        android:layout_width= "wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         app:iconifiedByDefault="false"
         app:queryHint="Search products..."
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_alignParentTop="true"/>
 
     <!-- Product Cards RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/productRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_below="@id/searchView"
+        android:layout_above="@id/cartButton"
         android:padding="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
@@ -44,5 +45,15 @@
         android:layout_below="@id/cartIcon"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"/>
+
+    <!-- Cart Button -->
+    <Button
+        android:id="@+id/cartButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="16dp"
+        android:text="Go to Cart" />
 
 </RelativeLayout>

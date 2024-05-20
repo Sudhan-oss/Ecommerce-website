@@ -3,18 +3,18 @@ package com.example.ecomerce_website;
 import java.io.Serializable;
 
 public class CartItem implements Serializable {
-    private String name;
+    private String productName;
     private double price;
     private int quantity;
 
-    public CartItem(String name, double price, int quantity) {
-        this.name = name;
+    public CartItem(String productName, double price, int quantity) {
+        this.productName = productName;
         this.price = price;
         this.quantity = quantity;
     }
 
-    public String getName() {
-        return name;
+    public String getProductName() {
+        return productName;
     }
 
     public double getPrice() {
@@ -25,20 +25,7 @@ public class CartItem implements Serializable {
         return quantity;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    @Override
-    public String toString() {
-        return name + ": $" + price + " x " + quantity;
     }
 }
