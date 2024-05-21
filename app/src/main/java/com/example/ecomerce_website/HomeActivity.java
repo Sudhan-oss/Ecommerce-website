@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class HomeActivity extends AppCompatActivity implements ProductAdapter.On
     private ImageView cartIcon;
     private Button cartButton;
     private SearchView searchView;
+    private FloatingActionButton fabPurchaseHistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class HomeActivity extends AppCompatActivity implements ProductAdapter.On
         cartIcon = findViewById(R.id.cartIcon);
         cartButton = findViewById(R.id.cartButton);
         searchView = findViewById(R.id.searchView);
+        fabPurchaseHistory = findViewById(R.id.fabPurchaseHistory);
 
         // Initialize product list and cart item list
         productList = new ArrayList<>();
@@ -58,6 +61,14 @@ public class HomeActivity extends AppCompatActivity implements ProductAdapter.On
             @Override
             public void onClick(View v) {
                 openCart();
+            }
+        });
+
+        // Set click listener for purchase history button
+        fabPurchaseHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openPurchaseHistory();
             }
         });
 
@@ -95,6 +106,11 @@ public class HomeActivity extends AppCompatActivity implements ProductAdapter.On
     private void openCart() {
         Intent intent = new Intent(HomeActivity.this, CartActivity.class);
         intent.putExtra("cartItems", cartItemList);
+        startActivity(intent);
+    }
+
+    private void openPurchaseHistory() {
+        Intent intent = new Intent(HomeActivity.this, PurchaseHistoryActivity.class);
         startActivity(intent);
     }
 

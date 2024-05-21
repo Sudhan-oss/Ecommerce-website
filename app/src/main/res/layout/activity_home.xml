@@ -56,4 +56,15 @@
         android:layout_margin="16dp"
         android:text="Go to Cart" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabPurchaseHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:src="@drawable/purchase_history"
+        android:contentDescription="Purchase History"
+        android:backgroundTint="@color/design_default_color_primary" />
+
 </RelativeLayout>

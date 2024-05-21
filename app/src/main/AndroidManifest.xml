@@ -35,6 +35,8 @@
 
         <activity android:name=".CheckoutActivity"/>
 
+        <activity android:name=".PurchaseHistoryActivity"/>
+
 
     </application>
 
